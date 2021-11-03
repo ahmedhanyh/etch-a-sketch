@@ -13,8 +13,13 @@ container.addEventListener("mouseover", e => {
 });
 
 
+function clearGrid(e) {
+    while (container.hasChildNodes) {
+        container.removeChild(container.firstElementChild);
+    }
+}
 
-
-
+const clearGridButton = document.querySelector("#clear-grid-btn");
+clearGridButton.addEventListener("click", clearGrid);
 
 
