@@ -3,7 +3,9 @@
 
 const container = document.querySelector("#container");  // Select the container div
 const generateGridButton = document.querySelector("#generate-grid-btn");  // Select the generate grid button
-const clearGridButton = document.querySelector("#clear-grid-btn");
+const clearGridButton = document.querySelector("#clear-grid-btn");  // Select the clear grid button
+const randomButton = document.querySelector("#random-color-btn");  // Select the random button
+let randomToggle = false;
 
 /* End of Global Variables */
 
@@ -38,6 +40,20 @@ function removeGrid() {
     }
 }
 
+// This function generates a random rgb value for a non-white color
+function randomRGBValue() {
+    return Math.random() * 254;
+}
+
+// This function generates random rgb values and
+// returns a formatted string that can be used as the value for the background-color property
+function randomColor() {
+    let r = randomRGBValue();
+    let g = randomRGBValue();
+    let b = randomRGBValue();
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 /* End of Functions Declarations */
 
 
@@ -45,7 +61,11 @@ function removeGrid() {
 
 // Add an hover event listener to the container so that the square divs inside it change their colors when hovered over
 container.addEventListener("mouseover", e => {
-    e.target.style.backgroundColor = "black";
+    if (randomToggle) {
+        e.target.style.backgroundColor = randomColor();
+    } else {
+        e.target.style.backgroundColor = "black";
+    }
 });    
 
 // Add a click event listener to the generate grid button - when clicked,
@@ -67,6 +87,16 @@ generateGridButton.addEventListener("click", e => {
 
 // Clear the grid when the clear grid button is clicked
 clearGridButton.addEventListener("click", clearGrid);
+
+// Toggle the random color switch that changes the square divs colors to a random color
+randomButton.addEventListener("click", () => {
+    randomButton.classList.toggle("rainbow");
+    if (randomToggle === true) {
+        randomToggle = false;
+    } else {
+        randomToggle = true;
+    }
+});
 
 /* End of Event Listeners */
 

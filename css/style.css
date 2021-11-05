@@ -35,10 +35,11 @@ button {
 
 button:hover {
     transform: scale(1.1);
+    color: red;
 }
 
-#rainbow-color-btn {
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+#random-color-btn:hover {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -48,3 +49,56 @@ button:hover {
     display: flex;
     justify-content: space-around;
 }
+
+.rainbow {
+    animation-name: rainbow-animation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rainbow-animation {
+    0% {
+        color: red;
+    }
+
+    10% {
+        color: orange;
+    }
+
+    20% {
+        color: yellow;
+    }
+
+    30% {
+        color: green;
+    }
+
+    40% {
+        color: blue;
+    }
+
+    50% {
+        color: indigo;
+    }
+    
+    60% {
+        color: violet;
+    }
+
+    70% {
+        color: indigo;
+    }
+
+    80% {
+        color: blue;
+    }
+
+    90% {
+        color:green;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
