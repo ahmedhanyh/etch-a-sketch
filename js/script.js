@@ -3,6 +3,7 @@
 
 const container = document.querySelector("#container");  // Select the container div
 const generateGridButton = document.querySelector("#generate-grid-btn");  // Select the generate grid button
+const clearGridButton = document.querySelector("#clear-grid-btn");
 
 /* End of Global Variables */
 
@@ -12,7 +13,7 @@ const generateGridButton = document.querySelector("#generate-grid-btn");  // Sel
 // This function takes the number of square divs per side and generates a grid of square divs
 function generateGrid(numOfSquaresPerSide = 16) {
     
-    let dim = 1024 / numOfSquaresPerSide;
+    let dim = 512 / numOfSquaresPerSide;
     let totalNumOfSquares = numOfSquaresPerSide ** 2;
     
     for (let i = 0; i < totalNumOfSquares; i++) {
@@ -25,10 +26,16 @@ function generateGrid(numOfSquaresPerSide = 16) {
 
 // This function clears the grid
 function clearGrid() {
+    const allGridSquares = document.querySelectorAll("#container div");
+    allGridSquares.forEach(square => square.style.backgroundColor = "blue");
+}
+
+// This function removes the grid
+function removeGrid() {
     
     while (container.hasChildNodes()) {
         container.removeChild(container.firstElementChild);
-    }   
+    }
 }
 
 /* End of Functions Declarations */
@@ -45,7 +52,7 @@ container.addEventListener("mouseover", e => {
 // it clears the current grid, asks the user for the width of the new grid and it finally generates the new grid
 generateGridButton.addEventListener("click", e => {
     
-    clearGrid();
+    removeGrid();
     
     let numOfSquares;
     
@@ -57,6 +64,9 @@ generateGridButton.addEventListener("click", e => {
     
     generateGrid(numOfSquares);
 });
+
+// Clear the grid when the clear grid button is clicked
+clearGridButton.addEventListener("click", clearGrid);
 
 /* End of Event Listeners */
 
