@@ -27,7 +27,7 @@ function generateGrid(numOfSquaresPerSide = 16) {
 // This function clears the grid
 function clearGrid() {
     const allGridSquares = document.querySelectorAll("#container div");
-    allGridSquares.forEach(square => square.style.backgroundColor = "blue");
+    allGridSquares.forEach(square => square.style.backgroundColor = "white");
 }
 
 // This function removes the grid
@@ -45,7 +45,7 @@ function removeGrid() {
 
 // Add an hover event listener to the container so that the square divs inside it change their colors when hovered over
 container.addEventListener("mouseover", e => {
-    e.target.style.backgroundColor = "red";
+    e.target.style.backgroundColor = "black";
 });    
 
 // Add a click event listener to the generate grid button - when clicked,
